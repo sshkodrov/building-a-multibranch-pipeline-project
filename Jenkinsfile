@@ -1,5 +1,5 @@
 pipeline {
-    agent local-node
+    agent {label 'local'}
     environment {
         CI = 'true'
     }
