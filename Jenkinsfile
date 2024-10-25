@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent local
     environment {
         CI = 'true'
     }
