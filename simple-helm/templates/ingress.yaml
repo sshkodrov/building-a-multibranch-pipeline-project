@@ -1,22 +1,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ .Values.route.name }}
-  labels:
-    app: {{ .Values.app.name }}
-  annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"  
+  name: apache-ingress
+  namespace: default
 spec:
   rules:
-    - host: {{ .Values.route.host }}  
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ .Values.service.name }}
-                port:
-                  number: {{ .Values.route.targetPort }}
-
-    
+  - host: apache.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Values.service.name }}
+            port:
+              number: 80
