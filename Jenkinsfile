@@ -1,8 +1,7 @@
 pipeline {
     agent {
-        ('slave')
+        label 'slave' 
     }
-
     stages {
         stage('Install Helm Chart') {
             steps {
