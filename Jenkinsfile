@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Port Forward'){
             steps{
-                 sh 'kubectl port-forward service/apache-service 8080:80'
+                 sh 'kubectl port-forward service/apache-service 8081:80'
             }
         }
     }
