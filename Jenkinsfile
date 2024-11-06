@@ -10,7 +10,6 @@ pipeline {
                     
             }
         }
-    }
         stage('Install Helm Chart') {
             steps {
                 script {
