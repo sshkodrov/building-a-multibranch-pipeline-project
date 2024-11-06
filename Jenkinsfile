@@ -7,7 +7,7 @@ pipeline {
             steps {
                 script {
             
-                    sh 'helm install my-release ./simple-helm'
+                    sh 'helm upgrade --install my-release ./simple-helm --namespace default '
                 }
             }
         }
