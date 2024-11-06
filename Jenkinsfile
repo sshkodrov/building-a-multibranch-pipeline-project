@@ -15,9 +15,13 @@ pipeline {
                 script {
             
                     sh 'helm upgrade --install my-release ./simple-helm '
-                    sh 'kubectl port-forward service/apache-service 8080:80
-'
+                  
                 }
+            }
+        }
+        stage('Port Forward'){
+            steps{
+                 sh 'kubectl port-forward service/apache-service 8080:80'
             }
         }
     }
