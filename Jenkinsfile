@@ -7,7 +7,7 @@ pipeline {
             steps {
                 script {
             
-                    sh 'helm upgrade --install my-release ./simple-helm --namespace default '
+                    sh 'helm upgrade --install my-release oci://registry-1.docker.io/bitnamicharts/apache '
                 }
             }
         }

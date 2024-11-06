@@ -26,4 +26,3 @@ app:
 route:
   name: my-route
   targetPort: 8080
-  host: myapp.example.com
