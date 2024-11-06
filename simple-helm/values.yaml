@@ -13,7 +13,7 @@ ingress:
 
 image:
   repository: httpd
-  tag: latest
+  tag: 2.4-bookworm
     
 container:
   name: apache
