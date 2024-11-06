@@ -2,6 +2,15 @@ pipeline {
     agent {
         label 'django' 
     }
+     stages {
+        stage('Checkout SCM') {
+            steps {
+                    checkout scm
+            
+                    
+            }
+        }
+    }
     stages {
         stage('Install Helm Chart') {
             steps {
