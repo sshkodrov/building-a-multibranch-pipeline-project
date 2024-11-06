@@ -1,5 +1,7 @@
 pipeline {
-    agent any  
+    agent {
+        ('django')
+    }
 
     stages {
         stage('Install Helm Chart') {
