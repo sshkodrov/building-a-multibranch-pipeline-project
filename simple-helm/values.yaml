@@ -1,0 +1,29 @@
+replicaCount: 1
+
+service:
+  name: apache-service
+  type: NodePort
+  port: 80
+  targetPort: 80
+  nodePort: 30080
+  protocol: TCP
+
+ingress:
+  enabled: true
+
+image:
+  repository: httpd
+  tag: latest
+    
+container:
+  name: apache
+  ports:
+    - containerPort: 80
+
+app:
+  name: apache
+
+route:
+  name: my-route
+  targetPort: 8080
+  host: myapp.example.com
