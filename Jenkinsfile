@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Deliver for development') {
             when {
-                expression { params.SELECT_BRANCH == 'development'}
+                expression { params.SELECT_BRANCH == 'development' }
             }
             steps {
                 sh './jenkins/scripts/deliver-for-development.sh'
@@ -37,7 +37,7 @@ pipeline {
         }
         stage('Deploy for production') {
             when {
-                expression { params.SELECT_BRANCH == 'production'}
+                expression { params.SELECT_BRANCH == 'production' }
             }
             steps {
                 sh './jenkins/scripts/deploy-for-production.sh'
