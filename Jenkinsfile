@@ -4,6 +4,13 @@ pipeline {
     agent {
         label 'django'
     }
+    parameters {
+        choice(
+            choices: ['master' , 'development' , 'production'],
+            description: 'Choose a branch'
+            name: 'BRANCH_NAME')
+        )
+    }
     environment {
         CI = 'true'
     }
@@ -20,7 +27,7 @@ pipeline {
         }
         stage('Deliver for development') {
             when {
-                branch 'development' 
+                expression { params.BRANCH_NAME == 'development'}
             }
             steps {
                 sh './jenkins/scripts/deliver-for-development.sh'
@@ -30,7 +37,7 @@ pipeline {
         }
         stage('Deploy for production') {
             when {
-                branch 'production'  
+                expression { params.BRANCH_NAME == 'production'}
             }
             steps {
                 sh './jenkins/scripts/deploy-for-production.sh'
