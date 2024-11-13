@@ -1,29 +1,21 @@
-pipeline {
-    agent {
-        label 'django' 
-    }
-     stages {
-        stage('Checkout SCM') {
-            steps {
-                    checkout scm
-            
-                    
-            }
-        }
-        stage('Install Helm Chart') {
-            steps {
-                script {
-            
-                    sh 'helm upgrade --install my-release ./simple-helm '
-                  
-                }
-            }
-        }
-        stage('Port Forward'){
-            steps{
-                 sh 'kubectl port-forward service/apache-service 8082:80'
-            }
-        }
-    }
 
+
+pipeline {
+    agent any
+    environment {
+        CI = 'true'
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'npm install'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh './jenkins/scripts/test.sh'
+            }
+        }
+    }
 }
+
