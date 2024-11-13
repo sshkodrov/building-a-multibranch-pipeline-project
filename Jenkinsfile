@@ -9,7 +9,7 @@ pipeline {
             choices: ['master' , 'development' , 'production'],
             description: 'Choose a branch',
             name: 'SELECT_BRANCH')
-        )
+    
     }
     environment {
         CI = 'true'
