@@ -7,7 +7,7 @@ pipeline {
     parameters {
         choice(
             choices: ['master' , 'development' , 'production'],
-            description: 'Choose a branch'
+            description: 'Choose a branch',
             name: 'SELECT_BRANCH')
         )
     }
