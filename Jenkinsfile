@@ -8,7 +8,7 @@ pipeline {
         choice(
             choices: ['master' , 'development' , 'production'],
             description: 'Choose a branch'
-            name: 'BRANCH_NAME')
+            name: 'SELECT_BRANCH')
         )
     }
     environment {
@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Deliver for development') {
             when {
-                expression { params.BRANCH_NAME == 'development'}
+                expression { params.SELECT_BRANCH == 'development'}
             }
             steps {
                 sh './jenkins/scripts/deliver-for-development.sh'
@@ -37,7 +37,7 @@ pipeline {
         }
         stage('Deploy for production') {
             when {
-                expression { params.BRANCH_NAME == 'production'}
+                expression { params.SELECT_BRANCH == 'production'}
             }
             steps {
                 sh './jenkins/scripts/deploy-for-production.sh'
